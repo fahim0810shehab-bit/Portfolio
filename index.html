@@ -593,6 +593,22 @@
     .cbadge { display: inline-flex; padding: 2px 9px; border-radius: 999px; font-size: .5rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
     .cbadge-done { background: #E5F8ED; color: #1B7A3A; }
     .cbadge-wip { background: var(--amber-bg); color: var(--amber); }
+    .cert-view-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-top: 10px; font-size: .75rem; font-weight: 500;
+      color: var(--amber); text-decoration: none;
+      transition: opacity .2s;
+    }
+    .cert-view-link:hover { opacity: .75; }
+    .cert-thumb {
+      display: block; margin-top: 10px;
+      width: 100%; max-width: 220px; height: 130px;
+      object-fit: cover; object-position: top;
+      border-radius: 8px;
+      border: 1px solid var(--gray-200);
+      transition: transform .25s, box-shadow .25s;
+    }
+    .cert-thumb:hover { transform: scale(1.02); box-shadow: 0 8px 24px rgba(0,0,0,.1); }
 
     /* =====================================================
        ACTIVITIES
@@ -1062,6 +1078,10 @@
               <h4>Aspire Leadership Program</h4>
               <p>Taught by Harvard-affiliated professors</p>
               <span class="cbadge cbadge-done">Completed</span>
+              <a href="aspire-certificate.png" target="_blank" rel="noopener noreferrer" class="cert-view-link">
+                <img src="aspire-certificate.png" alt="Aspire Leadership Certificate" class="cert-thumb">
+                <span>View Certificate ↗</span>
+              </a>
             </div>
           </div>
           <div class="cert-row sr d1">
@@ -1069,7 +1089,11 @@
             <div class="cert-info">
               <h4>Google Data Analytics</h4>
               <p>Coursera Professional Certificate</p>
-              <span class="cbadge cbadge-wip">In Progress</span>
+              <span class="cbadge cbadge-done">Completed</span>
+              <a href="coursera-certificate.pdf" target="_blank" rel="noopener noreferrer" class="cert-view-link">
+                <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                <span>View Certificate ↗</span>
+              </a>
             </div>
           </div>
           <div class="cert-row sr d2">
