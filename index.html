@@ -811,6 +811,46 @@
   }
   main { position: relative; z-index: 1; }
   footer { position: relative; z-index: 1; }
+
+  /* Hero two-column layout */
+  .hero-layout {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 64px;
+    align-items: center;
+  }
+  .hero-photo-col {
+    opacity: 0;
+    animation: fuUp .8s var(--ease) .5s forwards;
+  }
+  .hero-photo-frame {
+    border-radius: 18px;
+    overflow: hidden;
+    aspect-ratio: 3/4;
+    background: var(--gray-100);
+    box-shadow: 0 28px 72px rgba(0,0,0,.14);
+    position: relative;
+  }
+  .hero-photo-frame img {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: top center;
+    display: block;
+    transition: transform .6s var(--ease);
+  }
+  .hero-photo-frame:hover img { transform: scale(1.03); }
+  .hero-photo-caption {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 16px;
+    background: linear-gradient(to top, rgba(0,0,0,.55), transparent);
+    font-family: var(--font-m); font-size: .5rem;
+    letter-spacing: .16em; text-transform: uppercase;
+    color: rgba(255,255,255,.75);
+  }
+  @media (max-width: 900px) {
+    .hero-layout { grid-template-columns: 1fr; }
+    .hero-photo-col { order: -1; max-width: 220px; }
+    .hero-photo-frame { aspect-ratio: 4/5; }
+  }
 </style>
 
 <main id="main-content">
@@ -820,51 +860,67 @@
 ================================================ -->
 <section id="hero" aria-label="Introduction">
   <div class="container hero-inner">
+    <div class="hero-layout">
 
-    <div class="hero-top-bar">
-      <div class="role-pill">
-        <div class="role-dot"></div>
-        <span id="roleSpan">BBA Student · Debater · Builder</span>
-      </div>
-      <span style="font-family:var(--font-m);font-size:.5875rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gray-500)">NSU · Dhaka, Bangladesh</span>
-    </div>
+      <!-- Left: text content -->
+      <div>
+        <div class="hero-top-bar">
+          <div class="role-pill">
+            <div class="role-dot"></div>
+            <span id="roleSpan">BBA Student · Debater · Builder</span>
+          </div>
+          <span style="font-family:var(--font-m);font-size:.5875rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gray-500)">NSU · Dhaka, Bangladesh</span>
+        </div>
 
-    <div class="hero-name-wrap" aria-label="Fahim Shehab" style="display: flex; flex-wrap: wrap; column-gap: 0.25em;">
-      <span class="hero-name" id="hl1">FAHIM</span>
-      <span class="hero-name hero-name-amber" id="hl2">SHEHAB<span style="color:var(--amber)">.</span></span>
-    </div>
+        <div class="hero-name-wrap" aria-label="Fahim Shehab" style="display: flex; flex-wrap: wrap; column-gap: 0.25em;">
+          <span class="hero-name" id="hl1">FAHIM</span>
+          <span class="hero-name hero-name-amber" id="hl2">SHEHAB<span style="color:var(--amber)">.</span></span>
+        </div>
 
-    <div class="hero-bottom">
-        <p class="hero-tagline">
-          I don't wait to be qualified. I just build.<br>
-          <span style="font-size:.875em; font-weight:400; color:var(--gray-500)">BBA student at NSU. Debater. Self-taught builder from Dhaka.</span>
-        </p>
-      <div class="hero-ctas">
-        <a href="#projects" class="btn btn-dark">
-          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-          See My Work
-        </a>
-        <a href="mailto:fahim0810shehab@gmail.com" class="btn btn-outline">Get in Touch</a>
-      </div>
-    </div>
+        <div class="hero-bottom">
+            <p class="hero-tagline">
+              I don't wait to be qualified. I just build.<br>
+              <span style="font-size:.875em; font-weight:400; color:var(--gray-500)">BBA student at NSU. Debater. Self-taught builder from Dhaka.</span>
+            </p>
+          <div class="hero-ctas">
+            <a href="#projects" class="btn btn-dark">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+              See My Work
+            </a>
+            <a href="mailto:fahim0810shehab@gmail.com" class="btn btn-outline">Get in Touch</a>
+          </div>
+        </div>
 
-    <div class="hero-meta-row">
-      <div class="hero-socials">
-        <a href="https://www.linkedin.com/in/fahim-shehab-99339b358/" target="_blank" rel="noopener noreferrer" class="s-ico" aria-label="LinkedIn">
-          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-        </a>
-        <a href="https://github.com/fahim0810shehab-bit" target="_blank" rel="noopener noreferrer" class="s-ico" aria-label="GitHub">
-          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-        </a>
-        <a href="tel:+8801742716855" class="s-ico" aria-label="Phone">
-          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.95 10.5a19.79 19.79 0 01-3.07-8.67A2 2 0 012.86 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-        </a>
+        <div class="hero-meta-row">
+          <div class="hero-socials">
+            <a href="https://www.linkedin.com/in/fahim-shehab-99339b358/" target="_blank" rel="noopener noreferrer" class="s-ico" aria-label="LinkedIn">
+              <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="https://github.com/fahim0810shehab-bit" target="_blank" rel="noopener noreferrer" class="s-ico" aria-label="GitHub">
+              <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+            <a href="tel:+8801742716855" class="s-ico" aria-label="Phone">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.95 10.5a19.79 19.79 0 01-3.07-8.67A2 2 0 012.86 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            </a>
+          </div>
+          <div class="scroll-cue">
+            <span class="scroll-cue-label">Scroll</span>
+            <div class="scroll-line"></div>
+          </div>
+        </div>
       </div>
-      <div class="scroll-cue">
-        <span class="scroll-cue-label">Scroll</span>
-        <div class="scroll-line"></div>
+
+      <!-- Right: suit photo -->
+      <div class="hero-photo-col">
+        <div class="hero-photo-frame">
+          <img src="fahim.jpg" alt="Fahim Shehab"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div style="display:none;width:100%;height:100%;align-items:center;justify-content:center;font-family:var(--font-d);font-size:5rem;font-weight:800;color:var(--gray-300);opacity:.4">FS</div>
+          <div class="hero-photo-caption">Fahim Shehab · Dhaka</div>
+        </div>
       </div>
-    </div>
+
+    </div><!-- /hero-layout -->
   </div>
 </section>
 
@@ -907,7 +963,7 @@
           Outside that, I debate. Competitively. It's the thing that taught me how to think fast, argue clean, and never get rattled under pressure. That combination — builder brain, debater mouth — is what I bring to everything.
         </p>
       </div>
-      <!-- Portrait photo column -->
+      <!-- Portrait photo column (only suit pic here) -->
       <div class="sr d2">
         <div class="portrait-card">
           <img src="fahim.jpg" alt="Fahim Shehab"
@@ -915,12 +971,6 @@
           <div class="portrait-fallback" style="display:none">
             FS
           </div>
-        </div>
-        <!-- Debate photo -->
-        <div style="margin-top:12px; border-radius:12px; overflow:hidden; box-shadow:0 8px 28px rgba(0,0,0,.1);">
-          <img src="fahim-debate.jpg" alt="Fahim debating"
-            style="width:100%;display:block;object-fit:cover;object-position:top;height:160px;"
-            onerror="this.parentElement.style.display='none'">
         </div>
       </div>
     </div>
@@ -1106,8 +1156,8 @@
               <h4>Aspire Leadership Program</h4>
               <p>Taught by Harvard-affiliated professors</p>
               <span class="cbadge cbadge-done">Completed</span>
-              <a href="aspire-certificate.png" target="_blank" rel="noopener noreferrer" class="cert-view-link">
-                <img src="aspire-certificate.png" alt="Aspire Leadership Certificate" class="cert-thumb">
+              <a href="aspire-certificate.jpg" target="_blank" rel="noopener noreferrer" class="cert-view-link">
+                <img src="aspire-certificate.jpg" alt="Aspire Leadership Certificate" class="cert-thumb">
                 <span>View Certificate ↗</span>
               </a>
             </div>
@@ -1151,12 +1201,22 @@
         <div class="ac-role">Member · NSUDC</div>
         <div class="ac-name">NSU Debate Club</div>
         <div class="ac-desc">Still competing. Still losing sleep over rebuttals.</div>
+        <div style="margin-top:14px; border-radius:10px; overflow:hidden; box-shadow:0 4px 16px rgba(0,0,0,.08);">
+          <img src="fahim-debate.jpg" alt="Fahim giving a speech"
+            style="width:100%;display:block;object-fit:cover;object-position:top;height:140px;"
+            onerror="this.parentElement.style.display='none'">
+        </div>
       </div>
       <div class="ac sr d1">
         <div class="ac-em">⚡</div>
         <div class="ac-role">Ex-Executive Board</div>
         <div class="ac-name">DMRCDC Debate Club</div>
         <div class="ac-desc">Ran the operations side. Organized events. Got things done.</div>
+        <div style="margin-top:14px; border-radius:10px; overflow:hidden; box-shadow:0 4px 16px rgba(0,0,0,.08);">
+          <img src="fahim-debate.jpg" alt="Fahim speaking at mic"
+            style="width:100%;display:block;object-fit:cover;object-position:top;height:140px;"
+            onerror="this.parentElement.style.display='none'">
+        </div>
       </div>
       <div class="ac sr d2">
         <div class="ac-em">💡</div>
