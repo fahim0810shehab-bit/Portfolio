@@ -13,31 +13,14 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,700&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
     /* =====================================================
        DESIGN TOKENS
     ===================================================== */
+    /* ── BASE = DARK ── */
     :root {
-      --white:      #F8F7F2;
-      --black:      #0C0C0B;
-      --gray-50:    #F2F1EC;
-      --gray-100:   #EAEAE4;
-      --gray-200:   #E0DFD8;
-      --gray-300:   #C8C7BF;
-      --gray-500:   #8A8A82;
-      --gray-700:   #484840;
-      --amber:      #E8A838;
-      --amber-bg:   #FDF3DC;
-      --nav-bg:     rgba(248,247,242,.94);
-      --font-d:     'Playfair Display', Georgia, serif;
-      --font-b:     'Lato', system-ui, sans-serif;
-      --font-m:     'Space Mono', monospace;
-      --ease:       cubic-bezier(0.23, 1, 0.32, 1);
-    }
-
-    [data-theme="dark"] {
       --white:      #0A0A09;
       --black:      #F0EFE8;
       --gray-50:    #111110;
@@ -49,34 +32,25 @@
       --amber:      #E8A838;
       --amber-bg:   #221800;
       --nav-bg:     rgba(10,10,9,.94);
+      --font-d:     'Cormorant Garamond', Georgia, serif;
+      --font-b:     'DM Sans', system-ui, sans-serif;
+      --font-m:     'Space Mono', monospace;
+      --ease:       cubic-bezier(0.23, 1, 0.32, 1);
     }
 
-    [data-theme="green"] {
-      --white:      #04100A;
-      --black:      #D1FAE5;
-      --gray-50:    #071A10;
-      --gray-100:   #0C2818;
-      --gray-200:   #133D24;
-      --gray-300:   #1C5534;
-      --gray-500:   #34D399;
-      --gray-700:   #A7F3D0;
-      --amber:      #10B981;
-      --amber-bg:   #031A0C;
-      --nav-bg:     rgba(4,16,10,.94);
-    }
-
-    [data-theme="lightblue"] {
-      --white:      #EFF8FF;
-      --black:      #082040;
-      --gray-50:    #E0F0FF;
-      --gray-100:   #C0E0FF;
-      --gray-200:   #90C8F8;
-      --gray-300:   #50A8F0;
-      --gray-500:   #2878B8;
-      --gray-700:   #0A4880;
-      --amber:      #0070C0;
-      --amber-bg:   #E0F0FF;
-      --nav-bg:     rgba(239,248,255,.94);
+    /* ── LIGHT OVERRIDE ── */
+    [data-theme="light"] {
+      --white:      #F8F7F2;
+      --black:      #0C0C0B;
+      --gray-50:    #F2F1EC;
+      --gray-100:   #EAEAE4;
+      --gray-200:   #E0DFD8;
+      --gray-300:   #C8C7BF;
+      --gray-500:   #8A8A82;
+      --gray-700:   #484840;
+      --amber:      #E8A838;
+      --amber-bg:   #FDF3DC;
+      --nav-bg:     rgba(248,247,242,.94);
     }
 
     .theme-btn {
@@ -860,9 +834,9 @@
   /* Hero two-column layout */
   .hero-layout {
     display: grid;
-    grid-template-columns: 1fr 320px;
-    gap: 64px;
-    align-items: center;
+    grid-template-columns: 1fr 300px;
+    gap: 56px;
+    align-items: start;
   }
   .hero-photo-col {
     opacity: 0;
@@ -917,7 +891,7 @@
           <span style="font-family:var(--font-m);font-size:.5875rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gray-500)">NSU · Dhaka, Bangladesh</span>
         </div>
 
-        <div class="hero-name-wrap" aria-label="Fahim Shehab" style="display: flex; flex-wrap: nowrap; white-space: nowrap; column-gap: 0.25em;">
+        <div class="hero-name-wrap" aria-label="Fahim Shehab">
           <span class="hero-name" id="hl1">FAHIM</span>
           <span class="hero-name hero-name-amber" id="hl2">SHEHAB<span style="color:var(--amber)">.</span></span>
         </div>
@@ -1071,10 +1045,10 @@
           <h3 class="pcard-title">VibeBuilder</h3>
           <p class="pcard-tagline">A no-code website builder — drag, drop, publish.</p>
           <div class="pcard-highlights">
-            <span class="phl"><span class="phl-icon">🖥️</span> Drag &amp; Drop Builder</span>
-            <span class="phl"><span class="phl-icon">🔑</span> Auth &amp; Accounts</span>
-            <span class="phl"><span class="phl-icon">🌐</span> Live Deployment</span>
-            <span class="phl"><span class="phl-icon">☁️</span> Cloud Hosted</span>
+            <span class="phl">Drag &amp; Drop Builder</span>
+            <span class="phl">Auth &amp; Accounts</span>
+            <span class="phl">Live Deployment</span>
+            <span class="phl">Cloud Hosted</span>
           </div>
           <div class="pstack">
             <span class="stk">React</span><span class="stk">TypeScript</span>
@@ -1107,11 +1081,11 @@
           <h3 class="pcard-title">NSU Transcript Analyzer</h3>
           <p class="pcard-tagline">One tool, three platforms — AI-powered academic insights.</p>
           <div class="pcard-highlights">
-            <span class="phl"><span class="phl-icon">🌐</span> Web App</span>
-            <span class="phl"><span class="phl-icon">📱</span> Mobile App</span>
-            <span class="phl"><span class="phl-icon">💻</span> CLI Tool</span>
-            <span class="phl"><span class="phl-icon">🤖</span> AI Analysis</span>
-            <span class="phl"><span class="phl-icon">🔍</span> OCR Extraction</span>
+            <span class="phl">Web App</span>
+            <span class="phl">Mobile App</span>
+            <span class="phl">CLI Tool</span>
+            <span class="phl">AI Analysis</span>
+            <span class="phl">OCR Extraction</span>
           </div>
           <div class="pstack">
             <span class="stk">React</span><span class="stk">React Native</span>
@@ -1145,28 +1119,24 @@
 
       <!-- Communication -->
       <div class="sk-card sr">
-        <div class="sk-icon">🎙️</div>
         <div class="sk-title">Communication</div>
         <div class="sk-desc">Years of competitive debating sharpened my ability to think fast, argue clearly, and stay composed under pressure.</div>
       </div>
 
       <!-- Problem Solving -->
       <div class="sk-card sr d1">
-        <div class="sk-icon">🧩</div>
         <div class="sk-title">Problem Solving</div>
         <div class="sk-desc">I enjoy unfamiliar challenges. Breaking things down and figuring out a path forward is where I'm most energized.</div>
       </div>
 
       <!-- Leadership -->
       <div class="sk-card sr d2">
-        <div class="sk-icon">🚀</div>
         <div class="sk-title">Leadership</div>
         <div class="sk-desc">Whether in student organizations, competitions, or projects — I take ownership and help teams move ideas into action.</div>
       </div>
 
       <!-- Technology -->
       <div class="sk-card sr d3">
-        <div class="sk-icon">💻</div>
         <div class="sk-title">Technology</div>
         <div class="sk-desc">Web, mobile, AI integrations, and business-focused digital solutions. I use technology as a tool to solve real problems.</div>
         <div class="sk-pills">
@@ -1181,9 +1151,8 @@
         </div>
       </div>
 
-      <!-- Languages + Location -->
+      <!-- Languages -->
       <div class="sk-card sr d4">
-        <div class="sk-icon">🇧🇩</div>
         <div class="sk-title">Languages</div>
         <div class="sk-langs">
           <div class="sk-lang-row">
@@ -1199,7 +1168,6 @@
 
       <!-- Certifications -->
       <div class="sk-card amber-bg sr d5">
-        <div class="sk-icon">🏅</div>
         <div class="sk-title">Certified</div>
         <div class="sk-pills">
           <span class="sk-pill">IELTS</span>
@@ -1208,6 +1176,7 @@
         </div>
       </div>
 
+    </div>
   </div>
 </section>
 
@@ -1289,7 +1258,6 @@
     <h2 class="h2 sr d1" style="margin-top:14px">Beyond the Classroom</h2>
     <div class="act-grid">
       <div class="ac sr">
-        <div class="ac-em">🎙️</div>
         <div class="ac-role">Member</div>
         <div class="ac-name">NSU Debate Club</div>
         <div class="ac-desc">Competitive debating continues to be one of the most influential parts of my university experience, helping me strengthen communication, critical thinking, and public speaking skills.</div>
@@ -1300,7 +1268,6 @@
         </div>
       </div>
       <div class="ac sr d1">
-        <div class="ac-em">⚡</div>
         <div class="ac-role">Former Executive Board Member</div>
         <div class="ac-name">DMRCDC Debate Club</div>
         <div class="ac-desc">Contributed to event management, club operations, and member engagement while supporting one of the country's most active debate communities.</div>
@@ -1311,19 +1278,16 @@
         </div>
       </div>
       <div class="ac sr d2">
-        <div class="ac-em">💡</div>
         <div class="ac-role">Member</div>
         <div class="ac-name">NSU YES</div>
         <div class="ac-desc">Actively involved in the entrepreneurship ecosystem at NSU through events, competitions, and networking opportunities.</div>
       </div>
       <div class="ac sr d3">
-        <div class="ac-em">🌍</div>
         <div class="ac-role">Volunteer Tutor</div>
         <div class="ac-name">Schoolhouse.world</div>
         <div class="ac-desc">Provided free online tutoring to students from different parts of the world, supporting learning beyond geographical boundaries.</div>
       </div>
       <div class="ac sr d4">
-        <div class="ac-em">🔬</div>
         <div class="ac-role">Upcoming</div>
         <div class="ac-name">Research Assistant</div>
         <div class="ac-desc">Currently exploring opportunities to contribute to research related to business, technology, and data-driven decision-making.</div>
@@ -1698,20 +1662,19 @@ setInterval(() => {
   requestAnimationFrame(frame);
 })();
 
-/* ── THEME TOGGLE ── */
-const themes = ['light', 'dark', 'green', 'lightblue'];
-let currentTheme = localStorage.getItem('theme') || 'light';
-if (currentTheme !== 'light') document.documentElement.setAttribute('data-theme', currentTheme);
+/* ── THEME TOGGLE (dark = default, light = alternate) ── */
+let isLightMode = localStorage.getItem('theme') === 'light';
+if (isLightMode) document.documentElement.setAttribute('data-theme', 'light');
 
 function nextTheme() {
-  const idx = (themes.indexOf(currentTheme) + 1) % themes.length;
-  currentTheme = themes[idx];
-  if (currentTheme === 'light') {
-    document.documentElement.removeAttribute('data-theme');
+  isLightMode = !isLightMode;
+  if (isLightMode) {
+    document.documentElement.setAttribute('data-theme', 'light');
+    localStorage.setItem('theme', 'light');
   } else {
-    document.documentElement.setAttribute('data-theme', currentTheme);
+    document.documentElement.removeAttribute('data-theme');
+    localStorage.setItem('theme', 'dark');
   }
-  localStorage.setItem('theme', currentTheme);
 }
 document.getElementById('themeToggle')?.addEventListener('click', nextTheme);
 document.getElementById('mobThemeToggle')?.addEventListener('click', nextTheme);
