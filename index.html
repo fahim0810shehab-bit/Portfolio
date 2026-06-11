@@ -13,7 +13,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,700&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
     /* =====================================================
@@ -31,8 +31,8 @@
       --amber:      #E8A838;
       --amber-bg:   #FDF3DC;
       --nav-bg:     rgba(248,247,242,.94);
-      --font-d:     'Syne', sans-serif;
-      --font-b:     'Inter', sans-serif;
+      --font-d:     'Playfair Display', Georgia, serif;
+      --font-b:     'Lato', system-ui, sans-serif;
       --font-m:     'Space Mono', monospace;
       --ease:       cubic-bezier(0.23, 1, 0.32, 1);
     }
@@ -382,27 +382,31 @@
     /* =====================================================
        STATS BAR
     ===================================================== */
-    #stats-bar { background: var(--black); }
+    #stats-bar {
+      background: var(--gray-50);
+      border-top: 1px solid var(--gray-200);
+      border-bottom: 1px solid var(--gray-200);
+    }
     .stats-inner { display: flex; align-items: stretch; }
     .stat-cell {
-      flex: 1; padding: 40px 40px;
-      border-right: 1px solid rgba(255,255,255,.07);
+      flex: 1; padding: 28px 32px;
+      border-right: 1px solid var(--gray-200);
       text-align: center;
       transition: background .2s;
     }
     .stat-cell:last-child { border-right: none; }
-    .stat-cell:hover { background: rgba(255,255,255,.03); }
+    .stat-cell:hover { background: var(--white); }
     .stat-num {
       font-family: var(--font-d);
-      font-size: clamp(2.25rem, 4vw, 3.25rem);
-      font-weight: 800; letter-spacing: -.05em;
-      color: var(--white); display: block; margin-bottom: 8px;
+      font-size: clamp(1.5rem, 2.8vw, 2.25rem);
+      font-weight: 700; letter-spacing: -.03em;
+      color: var(--black); display: block; margin-bottom: 5px;
     }
     .stat-num .amb { color: var(--amber); }
     .stat-lbl {
-      font-family: var(--font-m); font-size: .5625rem;
-      letter-spacing: .16em; text-transform: uppercase;
-      color: rgba(255,255,255,.35); display: block;
+      font-family: var(--font-m); font-size: .5rem;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: var(--gray-500); display: block;
     }
 
     /* =====================================================
@@ -492,9 +496,11 @@
       overflow-x: auto; overflow-y: hidden;
       scrollbar-width: none; -ms-overflow-style: none;
       cursor: grab; padding: 0 48px 80px;
+      user-select: none; -webkit-user-select: none;
     }
     .hscroll-wrap::-webkit-scrollbar { display: none; }
     .hscroll-wrap.grabbing { cursor: grabbing; }
+    .hscroll-wrap.grabbing * { pointer-events: none; }
     .hscroll-track { display: flex; gap: 18px; width: max-content; }
 
     .pcard {
@@ -517,11 +523,19 @@
     .ptag-a { background: var(--amber-bg); color: var(--amber); border-color: color-mix(in srgb, var(--amber) 25%, transparent); }
 
     .pcard-body { padding: 16px 26px 26px; }
-    .pcard-title { font-family: var(--font-d); font-size: 1.625rem; font-weight: 700; letter-spacing: -.03em; margin-bottom: 10px; }
-    .pcard-desc { font-size: .875rem; color: var(--gray-700); line-height: 1.65; margin-bottom: 16px; }
-    .pcard-bullets { margin-bottom: 18px; display: flex; flex-direction: column; gap: 5px; }
-    .pcard-bullet { display: flex; gap: 8px; font-size: .8125rem; color: var(--gray-700); line-height: 1.5; align-items: flex-start; }
-    .pcard-bullet::before { content: '→'; color: var(--amber); flex-shrink: 0; margin-top: 1px; font-size: .75rem; }
+    .pcard-title { font-family: var(--font-d); font-size: 1.75rem; font-weight: 700; letter-spacing: -.02em; margin-bottom: 8px; line-height: 1.2; }
+    .pcard-tagline { font-size: .9375rem; color: var(--gray-500); line-height: 1.55; margin-bottom: 20px; font-style: italic; }
+    /* Visual highlights row */
+    .pcard-highlights { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+    .phl {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 7px 14px; border-radius: 10px;
+      background: var(--gray-50); border: 1px solid var(--gray-200);
+      font-size: .8rem; color: var(--gray-700); font-weight: 500;
+      transition: border-color .2s;
+    }
+    .phl:hover { border-color: var(--amber); }
+    .phl-icon { font-size: .9rem; }
     .pstack { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 22px; }
     .stk { font-family: var(--font-m); font-size: .5rem; letter-spacing: .06em; text-transform: uppercase; padding: 4px 10px; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 999px; color: var(--gray-700); transition: border-color .2s, color .2s; }
     .stk:hover { border-color: var(--amber); color: var(--amber); }
@@ -550,24 +564,54 @@
     .proj-div { height: 1px; background: var(--gray-200); margin: 0 48px; }
 
     /* =====================================================
-       SKILLS — BENTO GRID
+       SKILLS — CLEAN CARD GRID
     ===================================================== */
     #skills { padding: 112px 0; }
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px; margin-top: 44px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px; margin-top: 44px;
     }
-    .sg {
-      background: var(--gray-50); border: 1px solid var(--gray-200);
-      border-radius: 16px; padding: 22px;
-      transition: border-color .2s, box-shadow .2s;
+    .sk-card {
+      background: var(--gray-50);
+      border: 1px solid var(--gray-200);
+      border-radius: 18px; padding: 28px 30px;
+      transition: border-color .25s, box-shadow .25s;
     }
-    .sg:hover { border-color: var(--gray-300); box-shadow: 0 4px 16px rgba(0,0,0,.05); }
-    .sg.c2 { grid-column: span 2; }
-    .sg.c3 { grid-column: span 3; }
-    .sg.dark { background: var(--black); border-color: var(--black); }
-    .sg.amber { background: var(--amber-bg); border-color: color-mix(in srgb, var(--amber) 25%, transparent); }
+    .sk-card:hover { border-color: var(--amber); box-shadow: 0 6px 24px rgba(0,0,0,.06); }
+    .sk-card.full { grid-column: span 2; }
+    .sk-card.amber-bg { background: var(--amber-bg); border-color: color-mix(in srgb, var(--amber) 25%, transparent); }
+    .sk-icon { font-size: 1.5rem; margin-bottom: 10px; }
+    .sk-title {
+      font-family: var(--font-d);
+      font-size: 1.125rem; font-weight: 700;
+      letter-spacing: -.02em; color: var(--black);
+      margin-bottom: 8px;
+    }
+    .sk-desc {
+      font-size: .875rem; color: var(--gray-700);
+      line-height: 1.7;
+    }
+    .sk-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+    .sk-pill {
+      padding: 5px 14px;
+      border-radius: 999px;
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      font-size: .8125rem; color: var(--gray-700); font-weight: 500;
+      transition: border-color .2s, color .2s;
+    }
+    .sk-pill:hover { border-color: var(--amber); color: var(--amber); }
+    .sk-langs { display: flex; flex-direction: column; gap: 12px; }
+    .sk-lang-row { display: flex; align-items: center; justify-content: space-between; }
+    .sk-lang-name { font-weight: 700; font-size: .9375rem; color: var(--black); }
+    .sk-lang-badge {
+      font-family: var(--font-m); font-size: .475rem;
+      letter-spacing: .1em; text-transform: uppercase;
+      padding: 3px 9px; border-radius: 999px;
+      background: var(--white); border: 1px solid var(--gray-200);
+      color: var(--gray-500);
+    }
     .sg-lbl { font-family: var(--font-m); font-size: .5rem; letter-spacing: .14em; text-transform: uppercase; color: var(--gray-500); margin-bottom: 14px; }
     .sg.dark .sg-lbl { color: rgba(255,255,255,.38); }
     .sg.amber .sg-lbl { color: color-mix(in srgb, var(--amber) 80%, transparent); }
@@ -914,7 +958,7 @@
         </div>
       </div>
 
-      <!-- Right: suit photo -->
+      <!-- Right: suit photo (serious, no smile) -->
       <div class="hero-photo-col">
         <div class="hero-photo-frame">
           <img src="fahim.jpg" alt="Fahim Shehab"
@@ -1025,13 +1069,12 @@
         </div>
         <div class="pcard-body">
           <h3 class="pcard-title">VibeBuilder</h3>
-          <p class="pcard-desc">A no-code website builder designed to make website creation simple, accessible, and fast.</p>
-          <p class="pcard-desc" style="margin-top:8px; font-size:.8125rem; color:var(--gray-500)">Built as a full SaaS product, VibeBuilder allows users to create, customize, and publish websites through an intuitive drag-and-drop experience without writing code.</p>
-          <div class="pcard-bullets">
-            <div class="pcard-bullet">Drag-and-drop website building experience</div>
-            <div class="pcard-bullet">User authentication and account management</div>
-            <div class="pcard-bullet">Website publishing and deployment workflow</div>
-            <div class="pcard-bullet">Fully deployed and publicly accessible</div>
+          <p class="pcard-tagline">A no-code website builder — drag, drop, publish.</p>
+          <div class="pcard-highlights">
+            <span class="phl"><span class="phl-icon">🖥️</span> Drag &amp; Drop Builder</span>
+            <span class="phl"><span class="phl-icon">🔑</span> Auth &amp; Accounts</span>
+            <span class="phl"><span class="phl-icon">🌐</span> Live Deployment</span>
+            <span class="phl"><span class="phl-icon">☁️</span> Cloud Hosted</span>
           </div>
           <div class="pstack">
             <span class="stk">React</span><span class="stk">TypeScript</span>
@@ -1062,13 +1105,13 @@
         </div>
         <div class="pcard-body">
           <h3 class="pcard-title">NSU Transcript Analyzer</h3>
-          <p class="pcard-desc">An AI-powered transcript analysis platform designed specifically for NSU students.</p>
-          <p class="pcard-desc" style="margin-top:8px; font-size:.8125rem; color:var(--gray-500)">Users can upload their transcripts and instantly receive structured academic insights. The project combines OCR, backend processing, and AI-powered analysis across multiple platforms.</p>
-          <div class="pcard-bullets">
-            <div class="pcard-bullet">Available on web, mobile, and command-line environments</div>
-            <div class="pcard-bullet">OCR-based transcript extraction</div>
-            <div class="pcard-bullet">AI-generated academic insights</div>
-            <div class="pcard-bullet">End-to-end system designed and implemented independently</div>
+          <p class="pcard-tagline">One tool, three platforms — AI-powered academic insights.</p>
+          <div class="pcard-highlights">
+            <span class="phl"><span class="phl-icon">🌐</span> Web App</span>
+            <span class="phl"><span class="phl-icon">📱</span> Mobile App</span>
+            <span class="phl"><span class="phl-icon">💻</span> CLI Tool</span>
+            <span class="phl"><span class="phl-icon">🤖</span> AI Analysis</span>
+            <span class="phl"><span class="phl-icon">🔍</span> OCR Extraction</span>
           </div>
           <div class="pstack">
             <span class="stk">React</span><span class="stk">React Native</span>
@@ -1099,85 +1142,72 @@
     <h2 class="h2 sr d1" style="margin-top:14px">What I Bring</h2>
 
     <div class="skills-grid">
-      <!-- Communication - 2 cols -->
-      <div class="sg c2 sr">
-        <div class="sg-lbl">Communication &amp; Debate</div>
-        <div class="sg-heading" style="margin-bottom:8px">Communication</div>
-        <div style="font-size:.875rem; color:var(--gray-700); line-height:1.7">
-          Years of competitive debating taught me how to think critically, communicate clearly, and remain composed under pressure. These skills continue to shape how I lead projects and work with people.
-        </div>
+
+      <!-- Communication -->
+      <div class="sk-card sr">
+        <div class="sk-icon">🎙️</div>
+        <div class="sk-title">Communication</div>
+        <div class="sk-desc">Years of competitive debating sharpened my ability to think fast, argue clearly, and stay composed under pressure.</div>
       </div>
 
       <!-- Problem Solving -->
-      <div class="sg sr d1">
-        <div class="sg-lbl">Approach</div>
-        <div class="sg-heading" style="margin-bottom:8px">Problem Solving</div>
-        <div style="font-size:.8125rem;color:var(--gray-700);line-height:1.65">
-          I enjoy working through unfamiliar challenges, breaking down complex problems, and learning whatever is necessary to move forward.
-        </div>
+      <div class="sk-card sr d1">
+        <div class="sk-icon">🧩</div>
+        <div class="sk-title">Problem Solving</div>
+        <div class="sk-desc">I enjoy unfamiliar challenges. Breaking things down and figuring out a path forward is where I'm most energized.</div>
       </div>
 
       <!-- Leadership -->
-      <div class="sg sr d2">
-        <div class="sg-lbl">Collaboration</div>
-        <div class="sg-heading" style="margin-bottom:8px">Leadership</div>
-        <div style="font-size:.8125rem;color:var(--gray-700);line-height:1.65">
-          Whether in student organizations, competitions, volunteering, or collaborative projects, I enjoy taking ownership and helping teams move ideas into action.
+      <div class="sk-card sr d2">
+        <div class="sk-icon">🚀</div>
+        <div class="sk-title">Leadership</div>
+        <div class="sk-desc">Whether in student organizations, competitions, or projects — I take ownership and help teams move ideas into action.</div>
+      </div>
+
+      <!-- Technology -->
+      <div class="sk-card sr d3">
+        <div class="sk-icon">💻</div>
+        <div class="sk-title">Technology</div>
+        <div class="sk-desc">Web, mobile, AI integrations, and business-focused digital solutions. I use technology as a tool to solve real problems.</div>
+        <div class="sk-pills">
+          <span class="sk-pill">React</span>
+          <span class="sk-pill">TypeScript</span>
+          <span class="sk-pill">React Native</span>
+          <span class="sk-pill">Node.js</span>
+          <span class="sk-pill">Firebase</span>
+          <span class="sk-pill">Gemini AI</span>
+          <span class="sk-pill">SQLite</span>
+          <span class="sk-pill">GraphQL</span>
         </div>
       </div>
 
-      <!-- Tech stack - dark - 3 cols -->
-      <div class="sg dark c3 sr">
-        <div class="sg-lbl">Technology</div>
-        <div class="sg-heading" style="color:rgba(255,255,255,.9);margin-bottom:10px">Technology</div>
-        <div style="font-size:.875rem; color:rgba(255,255,255,.55); line-height:1.7">
-          Technology is one of the tools I use to solve problems. My experience includes web development, mobile applications, AI integrations, and business-focused digital solutions.
-        </div>
-        <div class="sg-tags" style="margin-top:14px">
-          <span class="sg-tag">React</span><span class="sg-tag">TypeScript</span><span class="sg-tag">React Native</span>
-          <span class="sg-tag">Node.js</span><span class="sg-tag">Firebase</span><span class="sg-tag">Gemini AI</span>
-        </div>
-      </div>
-
-      <!-- Languages -->
-      <div class="sg sr d1" style="display:flex;flex-direction:column;gap:12px;">
-        <div class="sg-lbl">Languages</div>
-        <div>
-          <div style="font-size:.9375rem;font-weight:600">Bengali</div>
-          <div style="font-size:.75rem;color:var(--gray-500)">Native</div>
-        </div>
-        <div>
-          <div style="font-size:.9375rem;font-weight:600">English</div>
-          <div style="font-size:.75rem;color:var(--gray-500)">Professional Proficiency (IELTS)</div>
-        </div>
-      </div>
-
-      <!-- Location -->
-      <div class="sg sr d2" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;">
-        <div class="sg-lbl">Based in</div>
-        <div class="sg-big">🇧🇩</div>
-        <div class="sg-sub">Dhaka, Bangladesh</div>
-      </div>
-
-      <!-- Certifications amber -->
-      <div class="sg amber c2 sr d3">
-        <div class="sg-lbl">Certified</div>
-        <div style="display:flex;gap:16px;flex-wrap:wrap;padding-top:4px">
-          <div>
-            <div class="sg-heading">IELTS</div>
-            <div style="font-size:.75rem;color:var(--gray-700);margin-top:2px">English Language Proficiency</div>
+      <!-- Languages + Location -->
+      <div class="sk-card sr d4">
+        <div class="sk-icon">🇧🇩</div>
+        <div class="sk-title">Languages</div>
+        <div class="sk-langs">
+          <div class="sk-lang-row">
+            <span class="sk-lang-name">Bengali</span>
+            <span class="sk-lang-badge">Native</span>
           </div>
-          <div>
-            <div class="sg-heading">Aspire Leadership</div>
-            <div style="font-size:.75rem;color:var(--gray-700);margin-top:2px">Harvard-affiliated Faculty</div>
-          </div>
-          <div>
-            <div class="sg-heading">Google Data Analytics</div>
-            <div style="font-size:.75rem;color:var(--gray-700);margin-top:2px">Coursera Professional Certificate</div>
+          <div class="sk-lang-row">
+            <span class="sk-lang-name">English</span>
+            <span class="sk-lang-badge">Professional · IELTS</span>
           </div>
         </div>
       </div>
-    </div>
+
+      <!-- Certifications -->
+      <div class="sk-card amber-bg sr d5">
+        <div class="sk-icon">🏅</div>
+        <div class="sk-title">Certified</div>
+        <div class="sk-pills">
+          <span class="sk-pill">IELTS</span>
+          <span class="sk-pill">Aspire Leadership Program</span>
+          <span class="sk-pill">Google Data Analytics</span>
+        </div>
+      </div>
+
   </div>
 </section>
 
