@@ -1431,6 +1431,10 @@ const hWrap = document.getElementById('hWrap');
 if(hWrap) {
   hWrap.addEventListener('wheel', e => {
     if(Math.abs(e.deltaX) < Math.abs(e.deltaY)) {
+      const atStart = hWrap.scrollLeft <= 0;
+      const atEnd   = hWrap.scrollLeft >= hWrap.scrollWidth - hWrap.clientWidth - 1;
+      // If already at the edge in the scroll direction, let the page scroll
+      if((e.deltaY < 0 && atStart) || (e.deltaY > 0 && atEnd)) return;
       e.preventDefault();
       hWrap.scrollBy({left: e.deltaY * 1.3, behavior:'auto'});
     }
